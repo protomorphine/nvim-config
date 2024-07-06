@@ -1,5 +1,1 @@
-  return {
-    exe = "dotnet-csharpier",
-    args = { },
-    stdin = true,
-  }
+return require("formatter.filetypes.cs").dotnetformat()

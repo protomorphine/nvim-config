@@ -1,37 +1,50 @@
-require("dashboard").setup
-{
-    theme = "hyper",
+require("dashboard").setup({
+    theme = "doom",
     config = {
         week_header = {
             enable = true,
         },
-        shortcut = {
+        center = {
             {
-                desc = "󰊳 Update",
-                group = "@property",
-                action = "Lazy update",
-                key = "u"
+                icon = "󰙅 ",
+                icon_hl = "Title",
+                desc = "Open tree",
+                desc_hl = "String",
+                key = "e",
+                keymap = "<leader> e",
+                key_hl = "Number",
+                action = ":Neotree float",
             },
             {
-                icon = " ",
-                icon_hl = "@variable",
-                desc = "Files",
-                group = "Label",
-                action = "Telescope find_files",
+                icon = "󰈞 ",
+                icon_hl = "Title",
+                desc = "Find files",
+                desc_hl = "String",
                 key = "f",
+                keymap = "<leader> f f",
+                key_hl = "Number",
+                action = ":Telescope find_files",
             },
             {
-              desc = " Apps",
-              group = "DiagnosticHint",
-              action = "Telescope app",
-              key = "a",
+                icon = " ",
+                icon_hl = "Title",
+                desc = "Find text",
+                desc_hl = "String",
+                key = "w",
+                keymap = "<leader> f w",
+                key_hl = "Number",
+                action = ":Telescope live_grep",
             },
             {
-              desc = " dotfiles",
-              group = "Number",
-              action = "Telescope dotfiles",
-              key = "d",
+                icon = " ",
+                icon_hl = "Title",
+                desc = "Git Braches",
+                desc_hl = "String",
+                key = "b",
+                keymap = "<leader> g b",
+                key_hl = "Number",
+                action = ":Telescope git_branches",
             },
-      },
-    }
-}
+        },
+    },
+})

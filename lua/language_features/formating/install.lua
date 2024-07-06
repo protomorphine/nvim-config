@@ -1,1 +1,1 @@
-return { "mhartington/formatter.nvim" }
+return { "mhartington/formatter.nvim", lazy = false }

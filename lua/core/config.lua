@@ -1,5 +1,5 @@
 -- Line Numbers
-vim.opt.number = true
+ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Clipboard
@@ -13,3 +13,5 @@ vim.opt.softtabstop = 4
 vim.opt.smartindent = true
 
 vim.opt.signcolumn="yes"
+
+vim.opt.cursorline = true

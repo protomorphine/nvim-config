@@ -1,3 +1,6 @@
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 require("lspconfig").omnisharp.setup({
-    cmd = { vim.fn.stdpath("data") .. "/mason/bin/omnisharp" }
+    capabilities = capabilities,
+    cmd = { vim.fn.stdpath("data") .. "/mason/bin/omnisharp" },
 })
