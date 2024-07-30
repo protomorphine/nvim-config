@@ -1,6 +1,6 @@
 local map = vim.keymap.set
 
-map("n", "<leader><CR>", "<cmd>Lspsaga code_action<CR>")
+map("n", "<leader><CR>", "<cmd>Lspsaga code_action<CR>", { desc = "Show Code Actions" })
 map("n", "<C-F>", "<cmd>Lspsaga finder<CR>")
 map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 map("n", "<F2>", "<cmd>Lspsaga rename<CR>")

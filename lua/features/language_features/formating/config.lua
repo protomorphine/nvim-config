@@ -2,8 +2,9 @@ require("formatter").setup({
     logging = true,
     log_level = vim.log.levels.DEBUG,
     filetype = {
-        lua = { require("language_features.formating.formatters.stylua") },
-        cs = { require("language_features.formating.formatters.dotnet") },
+        lua = { require("features.language_features.formating.formatters.stylua") },
+        cs = { require("features.language_features.formating.formatters.dotnet") },
+        markdown = { require("features.language_features.formating.formatters.md") },
     },
 })
 

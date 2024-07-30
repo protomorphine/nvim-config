@@ -4,8 +4,8 @@ require("mason-lspconfig").setup({
     automatic_installation = true,
 })
 
-require("language_features.lsp.langs.lua_config")
-require("language_features.lsp.langs.csharp")
+require("features.language_features.lsp.langs.lua_config")
+require("features.language_features.lsp.langs.csharp")
 
 require("lsp-progress").setup()
 
