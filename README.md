@@ -80,32 +80,32 @@ Configuration files structured as folder per feature:
 
 ## Used plugins
 
-catppuccin
-cmp-buffer
-cmp-cmdline
-cmp-nvim-lsp
-cmp-path
-dashboard-nvim
-formatter.nvim
-gitsigns.nvim
-image.nvim
-lazy.nvim
-lsp-progress.nvim
-lspsaga.nvim
-lualine.nvim
-mason-lspconfig.nvim
-mason.nvim
-mini.icons
-neo-tree.nvim
-nui.nvim
-nvim-autopairs
-nvim-cmp
-nvim-lspconfig
-nvim-treesitter
-nvim-web-devicons
-plenary.nvim
-vim-vsnip
-which-key.nvim
+- catppuccin
+- cmp-buffer
+- cmp-cmdline
+- cmp-nvim-lsp
+- cmp-path
+- dashboard-nvim
+- formatter.nvim
+- gitsigns.nvim
+- image.nvim
+- lazy.nvim
+- lsp-progress.nvim
+- lspsaga.nvim
+- lualine.nvim
+- mason-lspconfig.nvim
+- mason.nvim
+- mini.icons
+- neo-tree.nvim
+- nui.nvim
+- nvim-autopairs
+- nvim-cmp
+- nvim-lspconfig
+- nvim-treesitter
+- nvim-web-devicons
+- plenary.nvim
+- vim-vsnip
+- which-key.nvim
 
 ## Installation
 
