@@ -3,7 +3,7 @@
 ![dashboard](assets/dashboard.png)
 
 <details>
-  <summary>More screenshots</summary>
+ <summary>More screenshots</summary>
 
 ![file](assets/file-tree.png)
 ![lsp](assets/lsp-code-actions.png)
@@ -21,60 +21,61 @@ My NeoVim configuration for .NET development.
 Configuration files structured as folder per feature:
 
 ```plain
-├──  lua
-│  ├──  core
-│  │  └──  init.lua
-│  ├──  features
-│  │  ├──  init.lua
-│  │  ├──  language_features
-│  │  │  ├──  completion
-│  │  │  │  ├──  config.lua
-│  │  │  │  ├──  install.lua
-│  │  │  │  └──  mappings.lua
-│  │  │  ├──  formating
-│  │  │  │  ├──  config.lua
-│  │  │  │  ├──  formatters
-│  │  │  │  │  ├──  dotnet.lua
-│  │  │  │  │  ├──  md.lua
-│  │  │  │  │  └──  stylua.lua
-│  │  │  │  ├──  install.lua
-│  │  │  │  └──  mappings.lua
-│  │  │  ├──  lsp
-│  │  │  │  ├──  config.lua
-│  │  │  │  ├──  install.lua
-│  │  │  │  ├──  langs
-│  │  │  │  │  ├──  csharp.lua
-│  │  │  │  │  └──  lua_config.lua
-│  │  │  │  └──  mappings.lua
-│  │  │  └──  syntax_highlighting
-│  │  │     ├──  config.lua
-│  │  │     └──  install.lua
-│  │  └──  ui
-│  │     ├──  colorscheme
-│  │     │  ├──  config.lua
-│  │     │  └──  install.lua
-│  │     ├──  dashboard
-│  │     │  ├──  config.lua
-│  │     │  └──  install.lua
-│  │     ├──  file_tree
-│  │     │  ├──  config.lua
-│  │     │  ├──  install.lua
-│  │     │  └──  mappings.lua
-│  │     ├──  git
-│  │     │  ├──  config.lua
-│  │     │  └──  install.lua
-│  │     ├──  statusbar
-│  │     │  ├──  config.lua
-│  │     │  └──  install.lua
-│  │     └──  whichkey
-│  │        ├──  config.lua
-│  │        └──  install.lua
-│  ├──  mappings
-│  │  └──  init.lua
-│  ├──  plugin_manager
-│  │  └──  init.lua
-│  └──  utils
-│     └──  find.lua
+ .
+├── init.lua
+├── lua
+│ ├── core
+│ │ └── init.lua
+│ ├── features
+│ │ ├── init.lua
+│ │ ├── language_features
+│ │ │ ├── completion
+│ │ │ │ ├── config.lua
+│ │ │ │ ├── install.lua
+│ │ │ │ └── mappings.lua
+│ │ │ ├── formating
+│ │ │ │ ├── config.lua
+│ │ │ │ ├── formatters
+│ │ │ │ │ ├── dotnet.lua
+│ │ │ │ │ ├── md.lua
+│ │ │ │ │ └── stylua.lua
+│ │ │ │ ├── install.lua
+│ │ │ │ └── mappings.lua
+│ │ │ ├── lsp
+│ │ │ │ ├── config.lua
+│ │ │ │ ├── install.lua
+│ │ │ │ ├── langs
+│ │ │ │ │ ├── csharp.lua
+│ │ │ │ │ └── lua_config.lua
+│ │ │ │ └── mappings.lua
+│ │ │ └── syntax_highlighting
+│ │ │   ├── config.lua
+│ │ │   └── install.lua
+│ │ └── ui
+│ │   ├── colorscheme
+│ │   │ ├── config.lua
+│ │   │ └── install.lua
+│ │   ├── dashboard
+│ │   │ ├── config.lua
+│ │   │ └── install.lua
+│ │   ├── file_tree
+│ │   │ ├── config.lua
+│ │   │ ├── install.lua
+│ │   │ └── mappings.lua
+│ │   ├── git
+│ │   │ ├── config.lua
+│ │   │ └── install.lua
+│ │   ├── statusbar
+│ │   │ ├── config.lua
+│ │   │ └── install.lua
+│ │   └── whichkey
+│ │    ├── config.lua
+│ │    └── install.lua
+│ ├── mappings
+│ │ └── init.lua
+│ ├── plugin_manager
+│ │ └── init.lua
+└── README.md
 ```
 
 ## Used plugins
