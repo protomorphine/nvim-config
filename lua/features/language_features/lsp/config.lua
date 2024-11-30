@@ -1,11 +1,12 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "omnisharp" },
+    ensure_installed = { "lua_ls", "omnisharp", "fsautocomplete" },
     automatic_installation = true,
 })
 
 require("features.language_features.lsp.langs.lua_config")
 require("features.language_features.lsp.langs.csharp")
+require("features.language_features.lsp.langs.fsharp")
 
 require("lsp-progress").setup()
 

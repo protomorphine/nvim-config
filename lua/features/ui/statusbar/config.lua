@@ -1,6 +1,6 @@
 require("lualine").setup({
     options = {
-        theme = "catppuccin",
+        theme = require("lualine.themes.jellybeans"),
         section_separators = { left = "", right = "" },
         component_separators = { left = " ", right = " " },
     },

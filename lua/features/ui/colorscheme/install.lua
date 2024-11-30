@@ -1,1 +1,4 @@
-return { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+return {
+    { "kabouzeid/nvim-jellybeans" },
+    {"rktjmp/lush.nvim"}
+}

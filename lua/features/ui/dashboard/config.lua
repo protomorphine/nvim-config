@@ -1,50 +1,28 @@
-require("dashboard").setup({
-    theme = "doom",
-    config = {
-        week_header = {
-            enable = true,
-        },
-        center = {
+return {
+    bigfile = { enabled = true },
+    dashboard = {
+        enabled = true,
+        sections = {
             {
-                icon = "󰙅 ",
-                icon_hl = "Title",
-                desc = "Open tree",
-                desc_hl = "String",
-                key = "e",
-                keymap = "<leader> e",
-                key_hl = "Number",
-                action = ":Neotree float",
+                section = "terminal",
+                cmd = "chafa ~/.config/nvim/dashboard/wall.png --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
+                height = 17,
+                padding = 1,
             },
             {
-                icon = "󰈞 ",
-                icon_hl = "Title",
-                desc = "Find files",
-                desc_hl = "String",
-                key = "f",
-                keymap = "<leader> f f",
-                key_hl = "Number",
-                action = ":Telescope find_files",
-            },
-            {
-                icon = " ",
-                icon_hl = "Title",
-                desc = "Find text",
-                desc_hl = "String",
-                key = "w",
-                keymap = "<leader> f w",
-                key_hl = "Number",
-                action = ":Telescope live_grep",
-            },
-            {
-                icon = " ",
-                icon_hl = "Title",
-                desc = "Git Braches",
-                desc_hl = "String",
-                key = "b",
-                keymap = "<leader> g b",
-                key_hl = "Number",
-                action = ":Telescope git_branches",
+                pane = 2,
+                { section = "keys", gap = 1, padding = 1 },
+                { section = "startup" },
             },
         },
     },
-})
+    notifier = { enabled = true, timeout = 3000, },
+    quickfile = { enabled = true },
+    statuscolumn = { enabled = true },
+    words = { enabled = true },
+    styles = {
+        notification = {
+            wo = { wrap = true }, -- Wrap notifications
+        },
+    },
+}
