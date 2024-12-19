@@ -16,6 +16,7 @@ require("lazy").setup({
         { require("features.ui.git.install") },
         { require("features.ui.tabs.install") },
         { require("features.ui.telescope.install") },
+        { require("features.ui.md.install") },
         { require("features.language_features.syntax_highlighting.install") },
         { require("features.language_features.lsp.install") },
         { require("features.language_features.completion.install") },

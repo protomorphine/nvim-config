@@ -1,4 +1,4 @@
 return {
-    { "kabouzeid/nvim-jellybeans" },
-    {"rktjmp/lush.nvim"}
+    { "metalelf0/jellybeans-nvim" },
+    { "rktjmp/lush.nvim" },
 }

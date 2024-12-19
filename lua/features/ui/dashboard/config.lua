@@ -5,7 +5,7 @@ return {
         sections = {
             {
                 section = "terminal",
-                cmd = "chafa ~/.config/nvim/dashboard/wall.png --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
+                cmd = "chafa ~/.config/nvim/dashboard/wall.jpg --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
                 height = 17,
                 padding = 1,
             },
@@ -16,8 +16,8 @@ return {
             },
         },
     },
-    notifier = { enabled = true, timeout = 3000, },
-    quickfile = { enabled = true },
+    notifier = { enabled = true, timeout = 3000 },
+    -- quickfile = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
     styles = {

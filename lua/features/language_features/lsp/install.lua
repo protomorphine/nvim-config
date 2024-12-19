@@ -1,4 +1,5 @@
 return {
+    { "Hoffs/omnisharp-extended-lsp.nvim" },
     { "neovim/nvim-lspconfig" },
     { "linrongbin16/lsp-progress.nvim" },
     { "williamboman/mason-lspconfig.nvim" },

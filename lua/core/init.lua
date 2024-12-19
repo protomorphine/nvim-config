@@ -15,3 +15,5 @@ vim.opt.smartindent = true
 vim.opt.signcolumn = "yes"
 
 vim.opt.cursorline = true
+
+vim.opt.showmode = false

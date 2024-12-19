@@ -28,3 +28,10 @@ vim.api.nvim_create_autocmd("User", {
     pattern = "LspProgressStatusUpdated",
     callback = require("lualine").refresh,
 })
+
+-- enable inlay_hint's when LSP activated
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function()
+        vim.lsp.inlay_hint.enable(true)
+    end,
+})
