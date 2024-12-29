@@ -1,31 +1,31 @@
+-- Here is where you configure the autocompletion settings.
+local lsp_zero = require("lsp-zero")
+lsp_zero.extend_cmp()
+
+-- And you can configure cmp even more, if you want to.
 local cmp = require("cmp")
+local cmp_action = lsp_zero.cmp_action()
 
 cmp.setup({
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
+            require("luasnip").lsp_expand(args.body)
         end,
+    },
+    sources = {
+        { name = "path" },
+        { name = "nvim_lsp" },
+        { name = "nvim_lua" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "nvim_lsp_signature_help" },
     },
     window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
     },
-    sources = cmp.config.sources({ { name = "buffer" }, { name = "nvim_lsp_signature_help" } }, {
-        { name = "nvim_lsp" },
-        { name = "vsnip" },
-    }),
+    formatting = lsp_zero.cmp_format(),
 })
 
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won"t work anymore).
-cmp.setup.cmdline({ "/", "?" }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = { { name = "buffer" } },
-})
-
--- Use cmdline & path source for ":" (if you enabled `native_menu`, this won"t work anymore).
-cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
-})
-
+require("luasnip.loaders.from_vscode").load({ paths = { "~/.config/snippets" } })
 require("nvim-autopairs").setup()

@@ -1,24 +1,44 @@
-require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "omnisharp", "fsautocomplete" },
-    automatic_installation = true,
-})
+-- mason configuration
+-- require("mason").setup({
+--     registries = {
+--         "github:mason-org/mason-registry",
+--         "github:Crashdummyy/mason-registry",
+--     },
+-- })
 
-require("features.language_features.lsp.langs.lua_config")
+-- require("lsp-progress").setup()
+
+-- require("lspsaga").setup({
+--     ui = {
+--         code_action = "󰌵",
+--     },
+--     lightbulb = {
+--         sign = true,
+--         virtual_text = false,
+--         sign_priority = 0,
+--     },
+-- })
+
+-- require("symbol-usage").setup()
+
 require("features.language_features.lsp.langs.csharp")
 require("features.language_features.lsp.langs.fsharp")
+require("features.language_features.lsp.langs.lua_config")
 
-require("lsp-progress").setup()
+-- refresh diagnostic
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+    pattern = "*",
+    callback = function()
+        local clients = vim.lsp.get_clients({ name = "roslyn" })
+        if not clients or #clients == 0 then
+            return
+        end
 
-require("lspsaga").setup({
-    ui = {
-        code_action = "󰌵",
-    },
-    lightbulb = {
-        sign = true,
-        virtual_text = false,
-        sign_priority = 0,
-    },
+        local buffers = vim.lsp.get_buffers_by_client_id(clients[1].id)
+        for _, buf in ipairs(buffers) do
+            vim.lsp.util._refresh("textDocument/diagnostic", { bufnr = buf })
+        end
+    end,
 })
 
 -- listen lsp-progress event and refresh lualine
