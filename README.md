@@ -9,3 +9,7 @@ My NeoVim configuration for .NET development.
 ```sh
 git clone https://github.com/protomorphine/nvim-config ~/.config/nvim && nvim
 ```
+
+## Color scheme
+
+Many thanks [nanotech](https://github.com/nanotech) for [jellybeans.vim](https://github.com/nanotech/jellybeans.vim)
