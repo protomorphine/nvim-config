@@ -20,18 +20,5 @@ require("bufferline").setup({
         diagnostics = 'nvim_lsp',
         max_prefix_length = 8,
         indicator = { style = 'underline', },
-
-        ---@diagnostic disable-next-line: unused-local
-        diagnostics_indicator = function(count, level, diagnostics_dict, context)
-            if context.buffer:current() then
-                return ''
-            end
-            if level:match('error') then
-                return ' ' .. vim.g.diagnostic_icons.Error
-            elseif level:match('warning') then
-                return ' ' .. vim.g.diagnostic_icons.Warning
-            end
-            return ''
-        end,
     },
 })

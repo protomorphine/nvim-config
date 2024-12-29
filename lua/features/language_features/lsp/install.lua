@@ -69,35 +69,26 @@ local function monkey_patch_semantic_tokens(client)
     client.is_hacked = true
 
     -- let the runtime know the server can do semanticTokens/full now
-    if client.server_capabilities.semanticTokensProvider then
-        client.server_capabilities = vim.tbl_deep_extend("force", client.server_capabilities, {
-            semanticTokensProvider = {
-                full = true,
-            },
-        })
-    end
+    client.server_capabilities = vim.tbl_deep_extend("force", client.server_capabilities, {
+        semanticTokensProvider = {
+            full = true,
+        },
+    })
 
     -- monkey patch the request proxy
     local request_inner = client.request
-    client.request = function(method, params, handler)
+
+    ---@param method string
+    ---@param params table
+    ---@param handler fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown
+    ---@param buffrn integer
+    ---@return boolean
+    client.request = function(method, params, handler, buffrn)
         if method ~= vim.lsp.protocol.Methods.textDocument_semanticTokens_full then
-            return request_inner(method, params, handler)
+            return request_inner(method, params, handler, buffrn)
         end
 
-        local function find_buf_by_uri(search_uri)
-            local bufs = vim.api.nvim_list_bufs()
-            for _, buf in ipairs(bufs) do
-                local name = vim.api.nvim_buf_get_name(buf)
-                local uri = "file://" .. name
-                if uri == search_uri then
-                    return buf
-                end
-            end
-        end
-
-        local doc_uri = params.textDocument.uri
-
-        local target_bufnr = find_buf_by_uri(doc_uri)
+        local target_bufnr = vim.uri_to_bufnr(params.textDocument.uri)
         local line_count = vim.api.nvim_buf_line_count(target_bufnr)
         local last_line = vim.api.nvim_buf_get_lines(target_bufnr, line_count - 1, line_count, true)[1]
 
@@ -113,7 +104,7 @@ local function monkey_patch_semantic_tokens(client)
                     character = string.len(last_line) - 1,
                 },
             },
-        }, handler)
+        }, handler, buffrn)
     end
 end
 

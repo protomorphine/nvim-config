@@ -1,26 +1,3 @@
--- mason configuration
--- require("mason").setup({
---     registries = {
---         "github:mason-org/mason-registry",
---         "github:Crashdummyy/mason-registry",
---     },
--- })
-
--- require("lsp-progress").setup()
-
--- require("lspsaga").setup({
---     ui = {
---         code_action = "󰌵",
---     },
---     lightbulb = {
---         sign = true,
---         virtual_text = false,
---         sign_priority = 0,
---     },
--- })
-
--- require("symbol-usage").setup()
-
 require("features.language_features.lsp.langs.csharp")
 require("features.language_features.lsp.langs.fsharp")
 require("features.language_features.lsp.langs.lua_config")
