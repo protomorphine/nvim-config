@@ -1,5 +1,5 @@
 return {
-    "lewis6991/gitsigns.nvim", -- nvim v0.8.0
+    "lewis6991/gitsigns.nvim",
     "kdheepak/lazygit.nvim",
     lazy = true,
     cmd = {

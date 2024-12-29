@@ -1,6 +1,6 @@
-local wk = require("which-key")
-wk.add({
-    { "<leader>f", group = "file" }, -- group
-    { "<leader>l", group = "lsp" }, -- group
-    { "<leader>g", group = "git" }, -- group
+require("which-key").add({
+    { "<leader>f", group = "file" },
+    { "<leader>l", group = "lsp" },
+    { "<leader>g", group = "git" },
+    { "<leader>d", group = "dotnet" },
 })

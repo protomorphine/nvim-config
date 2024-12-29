@@ -17,45 +17,21 @@ local lsp_mappings = function(bufnr)
     local map = vim.keymap.set
     local telescope = require("telescope.builtin")
 
-    map("n", "<leader>ld", function()
-        telescope.lsp_type_definitions()
-    end, { desc = "lsp: type definitions", buffer = bufnr, remap = false })
+    ---@format disable
 
-    map("n", "<leader>lr", function()
-        telescope.lsp_references()
-    end, { desc = "lsp: references", buffer = bufnr, remap = false })
+    map("n", "<leader>la", function() require("actions-preview").code_actions() end ,   { desc = "lsp: code actions",       buffer = bufnr, remap = false })
+    map("n", "<leader>ld", function() telescope.lsp_type_definitions()          end,    { desc = "lsp: type definitions",   buffer = bufnr, remap = false })
+    map("n", "<leader>le", function() telescope.diagnostics()                   end,    { desc = "lsp: diagnostics",        buffer = bufnr, remap = false })
+    map("n", "<leader>li", function() telescope.lsp_implementations()           end,    { desc = "lsp: implemetations",     buffer = bufnr, remap = false })
+    map("n", "<leader>lm", function() vim.lsp.buf.rename()                      end,    { desc = "lsp: rename",             buffer = bufnr, remap = false })
+    map("n", "<leader>lr", function() telescope.lsp_references()                end,    { desc = "lsp: references",         buffer = bufnr, remap = false })
 
-    map("n", "<leader>li", function()
-        telescope.lsp_implementations()
-    end, { desc = "lsp: implemetations", buffer = bufnr, remap = false })
+    map("n", "gd", function() vim.lsp.buf.definition() end, { desc = "lsp: go to definition", buffer = bufnr, remap = false })
 
-    map("n", "gd", function()
-        vim.lsp.buf.definition()
-    end, { desc = "lsp: go to definition", buffer = bufnr, remap = false })
+    map("n", "[d", function() vim.diagnostic.goto_next() end, { desc = "lsp: go to next diagnostic", buffer = bufnr, remap = false })
+    map("n", "]d", function() vim.diagnostic.goto_prev() end, { desc = "lsp: go to prev diagnostic", buffer = bufnr, remap = false })
 
-    map("n", "<leader>le", function()
-        telescope.diagnostics()
-    end, { desc = "lsp: diagnostics", buffer = bufnr, remap = false })
-
-    map("n", "<leader>lws", function()
-        vim.lsp.buf.workspace_symbol()
-    end, { desc = "lsp: workspace_symbol", buffer = bufnr, remap = false })
-
-    map("n", "[d", function()
-        vim.diagnostic.goto_next()
-    end, { desc = "lsp: go to next diagnostic", buffer = bufnr, remap = false })
-
-    map("n", "]d", function()
-        vim.diagnostic.goto_prev()
-    end, { desc = "lsp: go to prev diagnostic", buffer = bufnr, remap = false })
-
-    map("n", "<leader>la", function()
-        require("actions-preview").code_actions()
-    end, { desc = "lsp: code actions", buffer = bufnr, remap = false })
-
-    map("n", "<leader>lm", function()
-        vim.lsp.buf.rename()
-    end, { desc = "lsp: rename", buffer = bufnr, remap = false })
+    ---@format enable
 end
 
 --- @param client vim.lsp.Client the LSP client
