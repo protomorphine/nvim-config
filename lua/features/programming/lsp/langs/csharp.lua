@@ -1,7 +1,6 @@
 require("roslyn").setup({
     config = {
         capabilities = {
-            -- Add semantic tokens capability
             semanticTokensProvider = {
                 full = true,
                 range = true,

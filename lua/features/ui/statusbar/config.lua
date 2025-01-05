@@ -166,6 +166,9 @@ ins_left({
         end
 
         for _, client in ipairs(clients) do
+            if client.name == "roslyn" then
+                return client.name
+            end
             local filetypes = client.config.filetypes
             if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
                 return client.name

@@ -1,19 +1,22 @@
-local dotnet_ui_mappings = function()
+local add_dotnet_specific_mappings = function()
     local map = vim.keymap.set
 
     ---@format disable
+    map("n", "<leader>da",  "<cmd>:DotnetUI new_item<CR>",                  { desc = ".NET new item", silent = true                 })
+    map("n", "<leader>dra", "<cmd>:DotnetUI project reference add<CR>",     { desc = ".NET add project reference", silent = true    })
+    map("n", "<leader>drr", "<cmd>:DotnetUI project reference remove<CR>",  { desc = ".NET remove project reference", silent = true })
+    map("n", "<leader>dpa", "<cmd>:DotnetUI project package add<CR>",       { desc = ".NET ada project package", silent = true      })
+    map("n", "<leader>dpr", "<cmd>:DotnetUI project package remove<CR>",    { desc = ".NET remove project package", silent = true   })
 
-    map("n", "<leader>na",  "<cmd>:DotnetUI new_item<CR>",                  { desc = ".NET new item", silent = true                 })
-    map("n", "<leader>nb",  "<cmd>:DotnetUI file bootstrap<CR>",            { desc = ".NET bootstrap class", silent = true          })
-    map("n", "<leader>nra", "<cmd>:DotnetUI project reference add<CR>",     { desc = ".NET add project reference", silent = true    })
-    map("n", "<leader>nrr", "<cmd>:DotnetUI project reference remove<CR>",  { desc = ".NET remove project reference", silent = true })
-    map("n", "<leader>npa", "<cmd>:DotnetUI project package add<CR>",       { desc = ".NET ada project package", silent = true      })
-    map("n", "<leader>npr", "<cmd>:DotnetUI project package remove<CR>",    { desc = ".NET remove project package", silent = true   })
+    local dotnet = require("easy-dotnet")
+    map("n", "<leader>dr",  function () dotnet.run() end,             { desc = ".NET run current", silent = true    })
+    map("n", "<leader>db",  function () dotnet.build() end,           { desc = ".NET build", silent = true          })
+    map("n", "<leader>dtr", function () dotnet.testrunner() end,      { desc = ".NET test runner", silent = true    })
 
     ---@format enable
 end
 
-local lsp_mappings = function(bufnr)
+local add_lsp_mappings = function(bufnr)
     local map = vim.keymap.set
     local telescope = require("telescope.builtin")
 
@@ -34,75 +37,20 @@ local lsp_mappings = function(bufnr)
     ---@format enable
 end
 
---- @param client vim.lsp.Client the LSP client
-local function monkey_patch_semantic_tokens(client)
-    -- NOTE: Super hacky... Don't know if I like that we set a random variable on
-    -- the client Seems to work though ~seblj
-    if client.is_hacked then
-        return
-    end
-    ---@diagnostic disable-next-line: inject-field
-    client.is_hacked = true
-
-    -- let the runtime know the server can do semanticTokens/full now
-    client.server_capabilities = vim.tbl_deep_extend("force", client.server_capabilities, {
-        semanticTokensProvider = {
-            full = true,
-        },
-    })
-
-    -- monkey patch the request proxy
-    local request_inner = client.request
-
-    ---@param method string
-    ---@param params table
-    ---@param handler fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown
-    ---@param buffrn integer
-    ---@return boolean
-    client.request = function(method, params, handler, buffrn)
-        if method ~= vim.lsp.protocol.Methods.textDocument_semanticTokens_full then
-            return request_inner(method, params, handler, buffrn)
-        end
-
-        local target_bufnr = vim.uri_to_bufnr(params.textDocument.uri)
-        local line_count = vim.api.nvim_buf_line_count(target_bufnr)
-        local last_line = vim.api.nvim_buf_get_lines(target_bufnr, line_count - 1, line_count, true)[1]
-
-        return request_inner("textDocument/semanticTokens/range", {
-            textDocument = params.textDocument,
-            range = {
-                ["start"] = {
-                    line = 0,
-                    character = 0,
-                },
-                ["end"] = {
-                    line = line_count - 1,
-                    character = string.len(last_line) - 1,
-                },
-            },
-        }, handler, buffrn)
-    end
-end
-
+---@param client vim.lsp.Client
 local on_lsp_attach = function(client, bufnr)
-    lsp_mappings(bufnr)
-    dotnet_ui_mappings()
+    local utils = require("features.programming.lsp.utils")
 
-    -- configure format on save when possible
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-    if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-                vim.lsp.buf.format({ async = false })
-            end,
-        })
+    if client.name == "roslyn" then
+        add_dotnet_specific_mappings()
     end
+
+    add_lsp_mappings(bufnr)
 
     vim.lsp.inlay_hint.enable(true)
-    monkey_patch_semantic_tokens(client)
+
+    utils.configure_format_on_save(client, bufnr)
+    utils.monkey_patch_semantic_tokens(client)
 end
 
 return {
@@ -179,5 +127,6 @@ return {
     { "linrongbin16/lsp-progress.nvim",   opts = {} },
     { "seblj/roslyn.nvim",                ft = "cs", },
     { "Wansmer/symbol-usage.nvim",        event = "BufReadPre", opts = {} },
-    { "MoaidHathot/dotnet.nvim",          branch = "dev",       cmd = "DotnetUI", opts = {}, },
+    { "MoaidHathot/dotnet.nvim",          cmd = "DotnetUI",     opts = {} },
+    { "GustavEikaas/easy-dotnet.nvim",    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" }, opts = {} },
 }

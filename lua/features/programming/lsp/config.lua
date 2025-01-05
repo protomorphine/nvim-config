@@ -1,6 +1,12 @@
-require("features.language_features.lsp.langs.csharp")
-require("features.language_features.lsp.langs.fsharp")
-require("features.language_features.lsp.langs.lua_config")
+require("features.programming.lsp.langs.csharp")
+require("features.programming.lsp.langs.fsharp")
+require("features.programming.lsp.langs.lua_config")
+
+vim.api.nvim_set_hl(0, "EasyDotnetTestRunnerFailed", { fg = "#cf6a4c", bg = "#151515" })
+vim.api.nvim_set_hl(0, "EasyDotnetTestRunnerPassed", { fg = "#799d6a", bg = "#151515" })
+vim.api.nvim_set_hl(0, "EasyDotnetTestRunnerRunning", { fg = "#fad07a", bg = "#151515" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#151515", fg = "#e8e8e8" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#151515" })
 
 -- refresh diagnostic
 vim.api.nvim_create_autocmd({ "InsertLeave" }, {
@@ -24,11 +30,4 @@ vim.api.nvim_create_autocmd("User", {
     group = "lualine_augroup",
     pattern = "LspProgressStatusUpdated",
     callback = require("lualine").refresh,
-})
-
--- enable inlay_hint's when LSP activated
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function()
-        vim.lsp.inlay_hint.enable(true)
-    end,
 })
