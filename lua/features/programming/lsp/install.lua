@@ -34,6 +34,8 @@ local add_lsp_mappings = function(bufnr)
     map("n", "[d", function() vim.diagnostic.goto_next() end, { desc = "lsp: go to next diagnostic", buffer = bufnr, remap = false })
     map("n", "]d", function() vim.diagnostic.goto_prev() end, { desc = "lsp: go to prev diagnostic", buffer = bufnr, remap = false })
 
+    map("n", "lh", "<cmd>Lspsaga hover_doc<CR>", { desc = "lsp: open hover doc", buffer = bufnr, remap = false })
+
     ---@format enable
 end
 
@@ -126,7 +128,7 @@ return {
     { "williamboman/mason-lspconfig.nvim" },
     { "linrongbin16/lsp-progress.nvim",   opts = {} },
     { "seblj/roslyn.nvim",                ft = "cs", },
-    { "Wansmer/symbol-usage.nvim",        event = "BufReadPre", opts = {} },
-    { "MoaidHathot/dotnet.nvim",          cmd = "DotnetUI",     opts = {} },
+    { "Wansmer/symbol-usage.nvim",        event = "BufReadPre",                                                        opts = {} },
+    { "MoaidHathot/dotnet.nvim",          cmd = "DotnetUI",                                                            opts = {} },
     { "GustavEikaas/easy-dotnet.nvim",    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" }, opts = {} },
 }
