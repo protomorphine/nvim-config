@@ -18,6 +18,8 @@ require("lazy").setup({
         { require("features.ui.telescope.install") },
         { require("features.ui.colorscheme.install") },
         { require("features.ui.cmdline_and_notifications.intall") },
+        { require("features.ui.inline_diagnostics.install") },
+
         { require("features.programming.lsp.install") },
         { require("features.programming.comments.install") },
         { require("features.programming.completion.install") },

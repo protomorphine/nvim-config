@@ -2,16 +2,12 @@ local add_dotnet_specific_mappings = function()
     local map = vim.keymap.set
 
     ---@format disable
+
     map("n", "<leader>da",  "<cmd>:DotnetUI new_item<CR>",                  { desc = ".NET new item", silent = true                 })
     map("n", "<leader>dra", "<cmd>:DotnetUI project reference add<CR>",     { desc = ".NET add project reference", silent = true    })
     map("n", "<leader>drr", "<cmd>:DotnetUI project reference remove<CR>",  { desc = ".NET remove project reference", silent = true })
     map("n", "<leader>dpa", "<cmd>:DotnetUI project package add<CR>",       { desc = ".NET ada project package", silent = true      })
     map("n", "<leader>dpr", "<cmd>:DotnetUI project package remove<CR>",    { desc = ".NET remove project package", silent = true   })
-
-    local dotnet = require("easy-dotnet")
-    map("n", "<leader>dr",  function () dotnet.run() end,             { desc = ".NET run current", silent = true    })
-    map("n", "<leader>db",  function () dotnet.build() end,           { desc = ".NET build", silent = true          })
-    map("n", "<leader>dtr", function () dotnet.testrunner() end,      { desc = ".NET test runner", silent = true    })
 
     ---@format enable
 end
@@ -128,7 +124,6 @@ return {
     { "williamboman/mason-lspconfig.nvim" },
     { "linrongbin16/lsp-progress.nvim",   opts = {} },
     { "seblj/roslyn.nvim",                ft = "cs", },
-    { "Wansmer/symbol-usage.nvim",        event = "BufReadPre",                                                        opts = {} },
-    { "MoaidHathot/dotnet.nvim",          cmd = "DotnetUI",                                                            opts = {} },
-    { "GustavEikaas/easy-dotnet.nvim",    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" }, opts = {} },
+    { "Wansmer/symbol-usage.nvim",        event = "BufReadPre", opts = {} },
+    { "MoaidHathot/dotnet.nvim",          cmd = "DotnetUI",     opts = {} },
 }
