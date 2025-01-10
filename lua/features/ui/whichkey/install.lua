@@ -1,6 +1,5 @@
 return {
     "folke/which-key.nvim",
-    keys = { "<leader>", "<c-r>", "<c-w>", '"', "'", "`", "c", "v", "g" },
     dependencies = { "echasnovski/mini.icons", version = false },
     event = "VeryLazy",
     init = function()

@@ -1,24 +1,24 @@
 vim.api.nvim_set_hl(0, 'NeotreeFloatBorder', { fg = "#e8e8e8", bg = "#151515" })
 
 require("neo-tree").setup({
-    close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+    close_if_last_window = false,
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = true,
-    open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
-    sort_case_insensitive = false,                                     -- used when sorting files and directories in the tree
+    open_files_do_not_replace_types = { "terminal", "trouble", "qf" },
+    sort_case_insensitive = false,
     default_component_configs = {
         container = {
             enable_character_fade = true,
         },
         indent = {
             indent_size = 2,
-            padding = 1, -- extra padding on left hand side
+            padding = 1,
             with_markers = true,
             indent_marker = "│",
             last_indent_marker = "└",
             highlight = "NeoTreeIndentMarker",
-            with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+            with_expanders = true,
             expander_collapsed = "",
             expander_expanded = "",
             expander_highlight = "NeoTreeExpander",
@@ -41,15 +41,13 @@ require("neo-tree").setup({
         },
         git_status = {
             symbols = {
-                -- Change type
-                added = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
-                modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
-                deleted = "✖", -- this can only be used in the git_status source
-                renamed = "󰁕", -- this can only be used in the git_status source
-                -- Status type
+                added = "✚",
+                modified = "",
+                deleted = "✖",
+                renamed = "󰁕",
                 untracked = "",
                 ignored = "",
-                unstaged = "U", --"󰄱",
+                unstaged = "U",
                 staged = "S",
                 conflict = "",
             },
@@ -58,10 +56,6 @@ require("neo-tree").setup({
         file_size = {
             enabled = true,
             required_width = 64, -- min width of window required to show this column
-        },
-        type = {
-            enabled = true,
-            required_width = 122, -- min width of window required to show this column
         },
         last_modified = {
             enabled = true,
