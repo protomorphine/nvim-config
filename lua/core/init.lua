@@ -1,31 +1,63 @@
+local opt = vim.opt
+local cmd = vim.cmd
+local api = vim.api
+local nvim_create_autocmd = api.nvim_create_autocmd
+local nvim_set_hl = api.nvim_set_hl
+
 -- Line Numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
+opt.number = true
+opt.relativenumber = true
 
 -- Clipboard
-vim.opt.clipboard = "unnamedplus"
+opt.clipboard = "unnamedplus"
 
 -- Indent Settings
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.smartindent = true
+opt.expandtab = true
+opt.shiftwidth = 4
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.smartindent = true
 
-vim.opt.signcolumn = "yes"
+opt.signcolumn = "yes"
 
-vim.opt.cursorline = true
+opt.cursorline = true
 
-vim.opt.showmode = false
-vim.opt.termguicolors = true
-vim.opt.laststatus = 0
+opt.showmode = false
+opt.termguicolors = true
+opt.laststatus = 0
 
-local api = vim.api
+opt.list = true
+
+cmd([[match TrailingWhitespace /\s\+$/]])
+
+nvim_set_hl(0, "TrailingWhitespace", { link = "Error" })
+
+nvim_create_autocmd("InsertEnter", {
+    callback = function()
+        local space = "·"
+        opt.listchars = {
+            tab = "│─",
+            multispace = space,
+            lead = space,
+            trail = space,
+            nbsp = space
+        }
+
+        nvim_set_hl(0, "TrailingWhitespace", { link = "Whitespace" })
+    end
+})
+
+nvim_create_autocmd("InsertLeave", {
+    callback = function()
+        opt.listchars = {}
+        nvim_set_hl(0, "TrailingWhitespace", { link = "Error" })
+    end
+})
 
 -- highlight yank
 local highlight_group = api.nvim_create_augroup("YankHighlight", { clear = true })
 
-api.nvim_create_autocmd("TextYankPost", {
+nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank()
     end,

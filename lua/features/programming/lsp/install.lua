@@ -18,7 +18,7 @@ local add_lsp_mappings = function(bufnr)
 
     ---@format disable
 
-    map("n", "<leader>la", function() require("actions-preview").code_actions() end ,   { desc = "lsp: code actions",       buffer = bufnr, remap = false })
+    map({"n", "v"}, "<leader>la", function() require("actions-preview").code_actions() end ,   { desc = "lsp: code actions",       buffer = bufnr, remap = false })
     map("n", "<leader>ld", function() telescope.lsp_type_definitions()          end,    { desc = "lsp: type definitions",   buffer = bufnr, remap = false })
     map("n", "<leader>le", function() telescope.diagnostics()                   end,    { desc = "lsp: diagnostics",        buffer = bufnr, remap = false })
     map("n", "<leader>li", function() telescope.lsp_implementations()           end,    { desc = "lsp: implemetations",     buffer = bufnr, remap = false })
