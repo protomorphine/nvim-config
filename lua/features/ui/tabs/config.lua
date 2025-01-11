@@ -1,5 +1,6 @@
+local colors = require("features.ui.colorscheme.colors")
 -- sets underline for selected buffer
-vim.api.nvim_set_hl(0, "TabLineSel", { fg = "#8197bf", bg = "#151515" })
+vim.api.nvim_set_hl(0, "TabLineSel", { fg = colors.blue, bg = colors.bg })
 
 require("bufferline").setup({
     highlights = {

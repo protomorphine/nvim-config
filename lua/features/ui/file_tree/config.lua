@@ -1,4 +1,5 @@
-vim.api.nvim_set_hl(0, 'NeotreeFloatBorder', { fg = "#e8e8e8", bg = "#151515" })
+local colors = require("features.ui.colorscheme.colors")
+vim.api.nvim_set_hl(0, 'NeotreeFloatBorder', { fg = colors.fg, bg = colors.bg })
 
 require("neo-tree").setup({
     close_if_last_window = false,

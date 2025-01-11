@@ -10,3 +10,5 @@ require("features.ui.cmdline_and_notifications.config")
 require("features.programming.syntax_highlighting.config")
 require("features.programming.completion.config")
 require("features.programming.lsp.config")
+
+require("features.ui.highlights")

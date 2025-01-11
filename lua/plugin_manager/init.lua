@@ -21,6 +21,7 @@ require("lazy").setup({
         { require("features.ui.inline_diagnostics.install") },
 
         { require("features.programming.lsp.install") },
+        { require("features.programming.mason.install") },
         { require("features.programming.comments.install") },
         { require("features.programming.completion.install") },
         { require("features.programming.syntax_highlighting.install") },

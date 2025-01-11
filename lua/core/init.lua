@@ -4,6 +4,9 @@ local api = vim.api
 local nvim_create_autocmd = api.nvim_create_autocmd
 local nvim_set_hl = api.nvim_set_hl
 
+-- disable swap files
+opt.swapfile = false
+
 -- Line Numbers
 opt.number = true
 opt.relativenumber = true
@@ -26,6 +29,7 @@ opt.showmode = false
 opt.termguicolors = true
 opt.laststatus = 0
 
+-- show whitespaces in insert mode
 opt.list = true
 
 cmd([[match TrailingWhitespace /\s\+$/]])
