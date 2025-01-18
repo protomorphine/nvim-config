@@ -1,6 +1,6 @@
-local opt = vim.opt
-local cmd = vim.cmd
 local api = vim.api
+local cmd = vim.cmd
+local opt = vim.opt
 local nvim_create_autocmd = api.nvim_create_autocmd
 local nvim_set_hl = api.nvim_set_hl
 
@@ -17,9 +17,9 @@ opt.clipboard = "unnamedplus"
 -- Indent Settings
 opt.expandtab = true
 opt.shiftwidth = 4
-opt.tabstop = 4
-opt.softtabstop = 4
 opt.smartindent = true
+opt.softtabstop = 4
+opt.tabstop = 4
 
 opt.signcolumn = "yes"
 
