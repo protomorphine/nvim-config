@@ -11,5 +11,15 @@ return {
         },
     },
     { "hrsh7th/cmp-nvim-lsp" },
-    { "windwp/nvim-autopairs", event = "InsertEnter" },
+    { "xzbdmw/colorful-menu.nvim", },
+    { "windwp/nvim-autopairs",     event = "InsertEnter" },
+    {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+            library = {
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
+    },
 }

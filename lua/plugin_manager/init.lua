@@ -25,6 +25,7 @@ require("lazy").setup({
         { require("features.programming.comments.install") },
         { require("features.programming.completion.install") },
         { require("features.programming.syntax_highlighting.install") },
+        { require("features.programming.testing.install") },
     },
     install = { colorscheme = { "jellybeans" } },
     checker = { enabled = true },
