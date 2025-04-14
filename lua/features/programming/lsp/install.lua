@@ -11,6 +11,9 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
     },
+    { "lewis6991/hover.nvim", },
+    { "jubnzv/virtual-types.nvim", },
+    { "danymat/neogen", config = true, },
     {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
@@ -18,8 +21,8 @@ return {
         dependencies = { "hrsh7th/cmp-nvim-lsp", "williamboman/mason-lspconfig.nvim" },
     },
     {
-        'felpafel/inlay-hint.nvim',
-        event = 'LspAttach',
-        config = true,
-    }
+        "Fildo7525/pretty_hover",
+        event = "LspAttach",
+        opts = {}
+    },
 }
