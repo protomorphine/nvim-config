@@ -1,7 +1,7 @@
 local M = {
     gray     = "#888888",
     bg       = "#151515",
-    fg       = "#e8e8d3",
+    fg       = "#e8e8e8",
     yellow   = "#ffb964",
     cyan     = "#8fbfdc",
     darkblue = "#8197bf",

@@ -3,6 +3,7 @@ require("features.programming.lsp.servers.csharp")
 require("features.programming.lsp.servers.fsharp")
 require("features.programming.lsp.servers.lua_config")
 require("features.programming.lsp.servers.clangd")
+require("features.programming.lsp.servers.cmake")
 
 require("features.programming.lsp.autocmd")
 
@@ -45,3 +46,6 @@ require("hover").setup {
     mouse_delay = 1000
 }
 -- require('inlay-hint').setup()
+vim.diagnostic.config({
+    signs = false
+})

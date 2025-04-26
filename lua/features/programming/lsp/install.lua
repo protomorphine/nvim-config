@@ -13,7 +13,7 @@ return {
     },
     { "lewis6991/hover.nvim", },
     { "jubnzv/virtual-types.nvim", },
-    { "danymat/neogen", config = true, },
+    { "danymat/neogen",            config = true, },
     {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
@@ -25,4 +25,5 @@ return {
         event = "LspAttach",
         opts = {}
     },
+    { "krady21/compiler-explorer.nvim" }
 }

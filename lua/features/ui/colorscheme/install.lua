@@ -1,1 +1,4 @@
-return { "nanotech/jellybeans.vim" }
+return {
+    { "nanotech/jellybeans.vim" },
+    { "rebelot/kanagawa.nvim" }
+}
