@@ -19,6 +19,7 @@ require("lazy").setup({
         { require("features.ui.colorscheme.install") },
         { require("features.ui.cmdline_and_notifications.intall") },
         { require("features.ui.inline_diagnostics.install") },
+        { require("features.ui.folds.install") },
 
         { require("features.programming.lsp.install") },
         { require("features.programming.mason.install") },

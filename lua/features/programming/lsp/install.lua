@@ -13,7 +13,7 @@ return {
     },
     { "lewis6991/hover.nvim", },
     { "jubnzv/virtual-types.nvim", },
-    { "danymat/neogen",            config = true, },
+    { "kkoomen/vim-doge", },
     {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
