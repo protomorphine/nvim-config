@@ -1,9 +1,17 @@
 return {
     { "seblj/roslyn.nvim",           ft = "cs", },
     { "aznhe21/actions-preview.nvim" },
-    { "MoaidHathot/dotnet.nvim",     cmd = "DotnetUI",    opts = {} },
-    { "Wansmer/symbol-usage.nvim",   event = "LspAttach", opts = {} },
-    { "VonHeikemen/lsp-zero.nvim",   branch = "v3.x",     lazy = true, config = false, },
+    { "MoaidHathot/dotnet.nvim",     cmd = "DotnetUI", opts = {} },
+    {
+        'oribarilan/lensline.nvim',
+        tag = '1.0.0', -- or: branch = 'release/1.x' for latest non-breaking updates
+        event = 'LspAttach',
+        config = function()
+            require("lensline").setup()
+        end,
+    },
+    -- { "Wansmer/symbol-usage.nvim",   event = "LspAttach", opts = {} },
+    { "VonHeikemen/lsp-zero.nvim", branch = "v3.x", lazy = true, config = false, },
     {
         "nvimdev/lspsaga.nvim",
         dependencies = {
