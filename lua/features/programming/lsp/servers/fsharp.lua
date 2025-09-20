@@ -1,1 +1,1 @@
-require("lspconfig").fsautocomplete.setup({})
+vim.lsp.enable("fsautocomplete")

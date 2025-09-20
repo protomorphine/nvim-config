@@ -1,1 +1,1 @@
-require("lspconfig").cmake.setup({})
+vim.lsp.enable("cmake")
