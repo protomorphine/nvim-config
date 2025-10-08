@@ -6,6 +6,7 @@ require('kanagawa').setup({
         theme = {
             dragon = {
                 ui = {
+                    bg = colors.bg,
                     bg_gutter = colors.bg
                 }
             }

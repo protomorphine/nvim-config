@@ -79,7 +79,7 @@ require("neo-tree").setup({
         },
         follow_current_file = {
             enabled = true,
-            leave_dirs_open = false,
+            leave_dirs_open = true,
         },
         group_empty_dirs = false, -- when true, empty folders will be grouped together
         use_libuv_file_watcher = false,
