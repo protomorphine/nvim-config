@@ -53,7 +53,9 @@ nvim_create_autocmd("InsertEnter", {
 
 nvim_create_autocmd("InsertLeave", {
     callback = function()
-        opt.listchars = {}
+        opt.listchars = {
+            tab = "│─",
+        }
         nvim_set_hl(0, "TrailingWhitespace", { link = "Error" })
     end
 })

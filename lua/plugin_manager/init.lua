@@ -22,6 +22,7 @@ require("lazy").setup({
         { require("features.ui.folds.install") },
         { require("features.ui.ft_motion_hl.install") },
         { require("features.ui.json_visualizer.install") },
+        { require("features.ui.cursor.install") },
 
         { require("features.programming.lsp.install") },
         { require("features.programming.mason.install") },
@@ -29,6 +30,8 @@ require("lazy").setup({
         { require("features.programming.completion.install") },
         { require("features.programming.syntax_highlighting.install") },
         { require("features.programming.testing.install") },
+
+        { require("features.misc.strudel.install") }
     },
     install = { colorscheme = { "jellybeans" } },
     checker = { enabled = true },

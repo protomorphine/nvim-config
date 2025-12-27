@@ -1,4 +1,5 @@
 local M = {}
+--- @class vim.lsp.Client client vim.lsp.Client the LSP client
 
 --- @param client vim.lsp.Client the LSP client
 M.monkey_patch_semantic_tokens = function(client)
@@ -52,7 +53,7 @@ M.monkey_patch_semantic_tokens = function(client)
 end
 
 ---Configures format on save when it's possible
----@param client vim.lsp.Client lsp client
+---@param client vim.lsp.Client LSP client
 ---@param bufnr integer buffer
 M.configure_format_on_save = function(client, bufnr)
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

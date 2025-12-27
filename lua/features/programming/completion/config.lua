@@ -1,11 +1,4 @@
--- Here is where you configure the autocompletion settings.
-
-local lsp_zero = require("lsp-zero")
-lsp_zero.extend_cmp()
-
--- And you can configure cmp even more, if you want to.
 local cmp = require("cmp")
-local cmp_action = lsp_zero.cmp_action()
 
 cmp.setup({
     snippet = {
@@ -41,7 +34,6 @@ cmp.setup({
             return vim_item
         end,
     },
-    -- formatting = lsp_zero.cmp_format(),
     mapping = cmp.mapping.preset.insert({
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),

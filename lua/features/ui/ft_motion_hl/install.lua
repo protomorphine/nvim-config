@@ -1,10 +1,16 @@
 return {
-    "samiulsami/fFtT-highlights.nvim",
-    config = function()
-        ---@module "fFtT-highlights"
-        ---@type fFtT_highlights.opts
-        require("fFtT-highlights"):setup({
-            ---See below for default configuration options
-        })
-    end,
+    {
+        "tris203/precognition.nvim",
+        opts = {
+            startVisible = true,
+            showBlankVirtLine = true
+        },
+    },
+    {
+
+        "samiulsami/fFtT-highlights.nvim",
+        config = function()
+            require("fFtT-highlights"):setup({})
+        end,
+    }
 }
