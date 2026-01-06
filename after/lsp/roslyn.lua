@@ -1,4 +1,5 @@
 vim.lsp.config("roslyn", {
+    filewatching = "roslyn",
     config = {
         settings = {
             ["csharp|inlay_hints"] = {

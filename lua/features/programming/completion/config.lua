@@ -16,22 +16,18 @@ cmp.setup({
         { name = "lazydev",                group_index = 0, },
     },
     window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({ border = "rounded" }),
+        documentation = cmp.config.window.bordered({ border = "rounded" }),
     },
     formatting = {
+        fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
-            local highlights_info = require("colorful-menu").cmp_highlights(entry)
+            local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            kind.kind = " " .. (strings[1] or "") .. " "
+            kind.menu = "    (" .. (strings[2] or "") .. ")"
 
-            -- highlight_info is nil means we are missing the ts parser, it's
-            -- better to fallback to use default `vim_item.abbr`. What this plugin
-            -- offers is two fields: `vim_item.abbr_hl_group` and `vim_item.abbr`.
-            if highlights_info ~= nil then
-                vim_item.abbr_hl_group = highlights_info.highlights
-                vim_item.abbr = highlights_info.text
-            end
-
-            return vim_item
+            return kind
         end,
     },
     mapping = cmp.mapping.preset.insert({

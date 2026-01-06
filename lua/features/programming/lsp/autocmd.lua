@@ -30,20 +30,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
             mappings.add_dotnet_specific_mappings()
         end
 
-        if client.name == "gopls" then
-            if client.supports_method("textDocument/inlayHint") then
-                vim.lsp.inlay_hint.enable(true, {
-                    assignVariableTypes = true,
-                    compositeLiteralFields = true,
-                    compositeLiteralTypes = true,
-                    constantValues = true,
-                    functionTypeParameters = true,
-                    parameterNames = true,
-                    rangeVariableTypes = true,
-                })
-            end
-        end
-
         mappings.add_lsp_mappings(bufnr)
 
         vim.lsp.inlay_hint.enable(true)

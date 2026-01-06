@@ -32,8 +32,12 @@ opt.laststatus = 0
 -- show whitespaces in insert mode
 opt.list = true
 
-cmd([[match TrailingWhitespace /\s\+$/]])
+opt.listchars = {
+    tab = "│─"
+}
 
+
+cmd([[match TrailingWhitespace /\s\+$/]])
 nvim_set_hl(0, "TrailingWhitespace", { link = "Error" })
 
 nvim_create_autocmd("InsertEnter", {
@@ -53,9 +57,6 @@ nvim_create_autocmd("InsertEnter", {
 
 nvim_create_autocmd("InsertLeave", {
     callback = function()
-        opt.listchars = {
-            tab = "│─",
-        }
         nvim_set_hl(0, "TrailingWhitespace", { link = "Error" })
     end
 })

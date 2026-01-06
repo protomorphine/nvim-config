@@ -5,6 +5,8 @@ vim.lsp.enable("lua_ls")
 vim.lsp.enable("roslyn")
 vim.lsp.enable("gopls")
 
+require("roslyn").setup()
+
 local lspsaga = require("lspsaga")
 lspsaga.setup({
     ui = {

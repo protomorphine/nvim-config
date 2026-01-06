@@ -51,4 +51,5 @@ return {
             require("luasnip").filetype_extend("sh", { "shelldoc" })
         end,
     },
+    { "https://github.com/onsails/lspkind.nvim" }
 }

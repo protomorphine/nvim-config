@@ -47,5 +47,16 @@ return {
         event = { "CmdlineEnter" },
         ft = { "go", 'gomod' },
         build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-    }
+    },
+    {
+        "chrisgrieser/nvim-lsp-endhints",
+        event = "LspAttach",
+        opts = {}, -- required, even if empty
+    },
+    {
+        "khoido2003/roslyn-filewatch.nvim",
+        config = function()
+            require("roslyn_filewatch").setup({})
+        end,
+    },
 }
