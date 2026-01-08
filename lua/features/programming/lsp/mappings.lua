@@ -32,7 +32,7 @@ M.add_lsp_mappings = function(bufnr)
     map("n", "[d", function() vim.diagnostic.goto_next() end, { desc = "lsp: go to next diagnostic", buffer = bufnr, remap = false })
     map("n", "]d", function() vim.diagnostic.goto_prev() end, { desc = "lsp: go to prev diagnostic", buffer = bufnr, remap = false })
 
-    map("n", "lh", function () require("pretty_hover").hover() end, { desc = "lsp: open hover doc", buffer = bufnr, remap = false })
+    map("n", "<leader>lh", function () require("pretty_hover").hover() end, { desc = "lsp: open hover doc", buffer = bufnr, remap = false })
 
     ---@format enable
 end
