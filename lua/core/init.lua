@@ -36,7 +36,6 @@ opt.listchars = {
     tab = "│─"
 }
 
-
 cmd([[match TrailingWhitespace /\s\+$/]])
 nvim_set_hl(0, "TrailingWhitespace", { link = "Error" })
 
@@ -57,6 +56,14 @@ nvim_create_autocmd("InsertEnter", {
 
 nvim_create_autocmd("InsertLeave", {
     callback = function()
+        local space = " "
+        opt.listchars = {
+            multispace = space,
+            lead = space,
+            trail = space,
+            nbsp = space
+        }
+
         nvim_set_hl(0, "TrailingWhitespace", { link = "Error" })
     end
 })

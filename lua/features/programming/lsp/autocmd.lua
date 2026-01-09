@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             return
         end
 
-        local utils = require("features.programming.lsp.utils")
+        vim.lsp.inlay_hint.enable(true)
         local mappings = require("features.programming.lsp.mappings")
 
         if client.name == "roslyn" then
@@ -32,10 +32,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         mappings.add_lsp_mappings(bufnr)
 
-        vim.lsp.inlay_hint.enable(true)
-
-        utils.configure_format_on_save(client, bufnr)
-        utils.monkey_patch_semantic_tokens(client)
+        require("features.programming.lsp.utils")
+            .configure_format_on_save(client, bufnr)
     end,
 })
 

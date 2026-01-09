@@ -1,5 +1,3 @@
--- local lsp_zero = require("lsp-zero")
-
 require("mason").setup({
     registries = {
         "github:mason-org/mason-registry",
@@ -13,5 +11,4 @@ require("mason-lspconfig").setup({
         "fsautocomplete",
         "lua_ls"
     },
-    -- handlers = { lsp_zero.default_setup, },
 })

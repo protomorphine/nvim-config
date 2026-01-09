@@ -4,6 +4,7 @@ return {
     opts = {
         foldtext = {
             lineCount = {
+                template = "%d ",
                 hlgroup = "LspInlayHint"
             }
         }

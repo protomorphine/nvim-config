@@ -19,11 +19,9 @@ require("lazy").setup({
         { require("features.ui.colorscheme.install") },
         { require("features.ui.cmdline_and_notifications.intall") },
         { require("features.ui.inline_diagnostics.install") },
-        { require("features.ui.folds.install") },
         { require("features.ui.ft_motion_hl.install") },
         { require("features.ui.json_visualizer.install") },
         { require("features.ui.cursor.install") },
-        { require("features.programming.folds.install") },
 
         { require("features.programming.lsp.install") },
         { require("features.programming.mason.install") },
@@ -31,6 +29,7 @@ require("lazy").setup({
         { require("features.programming.completion.install") },
         { require("features.programming.syntax_highlighting.install") },
         { require("features.programming.testing.install") },
+        { require("features.programming.folds.install") },
 
         { require("features.misc.strudel.install") }
     },

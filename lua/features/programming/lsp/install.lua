@@ -17,7 +17,6 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
     },
-    { "kkoomen/vim-doge", },
     {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
