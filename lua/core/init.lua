@@ -58,6 +58,7 @@ nvim_create_autocmd("InsertLeave", {
     callback = function()
         local space = " "
         opt.listchars = {
+            tab = "│─",
             multispace = space,
             lead = space,
             trail = space,
