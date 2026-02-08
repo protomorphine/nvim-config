@@ -33,7 +33,7 @@ opt.laststatus = 0
 opt.list = true
 
 opt.listchars = {
-    tab = "│─"
+    tab = "  "
 }
 
 cmd([[match TrailingWhitespace /\s\+$/]])
@@ -58,7 +58,8 @@ nvim_create_autocmd("InsertLeave", {
     callback = function()
         local space = " "
         opt.listchars = {
-            tab = "│─",
+            tab = "  ",
+            -- tab = "│─",
             multispace = space,
             lead = space,
             trail = space,
