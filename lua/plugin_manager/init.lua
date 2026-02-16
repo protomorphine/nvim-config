@@ -17,7 +17,7 @@ require("lazy").setup({
         { require("features.ui.dashboard.install") },
         { require("features.ui.telescope.install") },
         { require("features.ui.colorscheme.install") },
-        { require("features.ui.cmdline_and_notifications.intall") },
+        { require("features.ui.cmdline_and_notifications.install") },
         { require("features.ui.inline_diagnostics.install") },
         { require("features.ui.ft_motion_hl.install") },
         { require("features.ui.json_visualizer.install") },

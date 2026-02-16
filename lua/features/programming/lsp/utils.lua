@@ -7,7 +7,6 @@ local M = {}
 M.configure_format_on_save = function(client, bufnr)
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-    ---@diagnostic disable-next-line: undefined-field
     if client.name == "gopls" then
         vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
         vim.api.nvim_create_autocmd("BufWritePre", {
@@ -20,7 +19,7 @@ M.configure_format_on_save = function(client, bufnr)
         return
     end
 
-    if client.supports_method("textDocument/formatting") then
+    if client.supports_method("textDocument/formatting", bufnr) then
         vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
         vim.api.nvim_create_autocmd("BufWritePre", {
             group = augroup,

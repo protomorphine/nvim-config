@@ -32,8 +32,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         mappings.add_lsp_mappings(bufnr)
 
-        require("features.programming.lsp.utils")
-            .configure_format_on_save(client, bufnr)
+        require("features.programming.lsp.utils").configure_format_on_save(client, bufnr)
     end,
 })
 
@@ -71,7 +70,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
                     -- buffer has changed.
                     vim.defer_fn(function()
                         client:request(
-                        ---@diagnostic disable-next-line: param-type-mismatch
                             "textDocument/_vs_onAutoInsert",
                             params,
                             function(err, result, _)
