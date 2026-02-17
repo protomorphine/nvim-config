@@ -20,16 +20,17 @@ M.add_lsp_mappings = function(bufnr)
 
     ---@format disable
 
-    map({"n", "v"}, "<leader>la", function() require("actions-preview").code_actions() end ,   { desc = "lsp: code actions",       buffer = bufnr, remap = false })
-    map("n", "<leader>ld", function() telescope.lsp_type_definitions()          end,    { desc = "lsp: type definitions",   buffer = bufnr, remap = false })
-    map("n", "<leader>le", function() telescope.diagnostics()                   end,    { desc = "lsp: diagnostics",        buffer = bufnr, remap = false })
-    map("n", "<leader>li", function() telescope.lsp_implementations()           end,    { desc = "lsp: implemetations",     buffer = bufnr, remap = false })
-    map("n", "<leader>lm", function() vim.lsp.buf.rename()                      end,    { desc = "lsp: rename",             buffer = bufnr, remap = false })
-    map("n", "<leader>lr", function() telescope.lsp_references()                end,    { desc = "lsp: references",         buffer = bufnr, remap = false })
+    map({"n", "v"}, "<leader>la",  require("actions-preview").code_actions,   { desc = "lsp: code actions",       buffer = bufnr, remap = false })
 
-    map("n", "gd", function() vim.lsp.buf.definition() end, { desc = "lsp: go to definition", buffer = bufnr, remap = false })
+    map("n", "<leader>ls", telescope.lsp_dynamic_workspace_symbols, { desc = "lsp: workspace symbols",  buffer = bufnr, remap = false })
+    map("n", "<leader>ld", telescope.lsp_type_definitions,          { desc = "lsp: type definitions",   buffer = bufnr, remap = false })
+    map("n", "<leader>le", telescope.diagnostics,                   { desc = "lsp: diagnostics",        buffer = bufnr, remap = false })
+    map("n", "<leader>li", telescope.lsp_implementations,           { desc = "lsp: implemetations",     buffer = bufnr, remap = false })
+    map("n", "<leader>lr", telescope.lsp_references,                { desc = "lsp: references",         buffer = bufnr, remap = false })
+    map("n", "<leader>lm", vim.lsp.buf.rename,                      { desc = "lsp: rename",             buffer = bufnr, remap = false })
+    map("n", "gd",         vim.lsp.buf.definition,                  { desc = "lsp: go to definition",   buffer = bufnr, remap = false })
 
-    map("n", "<leader>lh", function () require("pretty_hover").hover() end, { desc = "lsp: open hover doc", buffer = bufnr, remap = false })
+    map("n", "<leader>lh", require("pretty_hover").hover, { desc = "lsp: open hover doc", buffer = bufnr, remap = false })
 
     ---@format enable
 end
