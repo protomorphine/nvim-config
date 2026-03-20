@@ -9,7 +9,8 @@ require("mason-lspconfig").setup({
     ensure_installed = {
         "roslyn",
         "fsautocomplete",
-        "lua_ls",
-        "stylua"
+        "lua-language-server",
+        "stylua",
+        "gopls"
     },
 })

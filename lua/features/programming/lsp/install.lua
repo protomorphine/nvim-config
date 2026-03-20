@@ -37,11 +37,7 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
         opts = function()
-            require("go").setup(opts)
-            return {
-                -- lsp_keymaps = false,
-                -- other options
-            }
+            require("go").setup()
         end,
         event = { "CmdlineEnter" },
         ft = { "go", 'gomod' },

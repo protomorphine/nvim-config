@@ -4,7 +4,7 @@ vim.api.nvim_set_hl(0, "TabLineSel", { fg = colors.blue, bg = colors.bg })
 
 require("bufferline").setup({
     highlights = {
-        fill = { bg = "#151515" },
+        fill = { bg = colors.bg },
         info_selected = { bold = true },
         error_selected = { bold = true },
         buffer_selected = { bold = true },
