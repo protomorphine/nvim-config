@@ -1,4 +1,6 @@
-vim.lsp.config("gopls", {
+return {
+    cmd = { "gopls", "-v" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
     settings = {
         gopls = {
             gofumpt = true,
@@ -34,4 +36,4 @@ vim.lsp.config("gopls", {
             semanticTokens = true,
         },
     },
-})
+}

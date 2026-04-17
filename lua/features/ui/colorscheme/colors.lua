@@ -9,7 +9,7 @@ local M = {
     orange   = "#fad07a",
     violet   = "#c6b6ee",
     magenta  = "#c6b6ee",
-    blue     = "#8197bf",
+    blue     = "#7a8aa6",
     red      = "#cf6a4c",
 }
 

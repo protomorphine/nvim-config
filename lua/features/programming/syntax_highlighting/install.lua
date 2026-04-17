@@ -1,1 +1,1 @@
-return { "nvim-treesitter/nvim-treesitter", branch = "master"}
+return { "nvim-treesitter/nvim-treesitter", branch = "main" }

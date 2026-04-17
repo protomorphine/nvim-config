@@ -8,13 +8,16 @@ return {
             transparent = false,
             italics = true,
             bold = true,
-            flat_ui = false,                 -- toggles "flat UI" for pickers
+            flat_ui = false, -- toggles "flat UI" for pickers
             plugins = {
                 all = false,
                 auto = true, -- auto-detect installed plugins via lazy.nvim
             },
-            on_highlights = function(hl, c)
-                hl.Operator = { fg = require("features.ui.colorscheme.colors").red, bold = true }
+            on_highlights = function(hl, _)
+                local colors = require("features.ui.colorscheme.colors")
+                hl.Operator = { fg = colors.red, bold = true }
+                hl["@lsp.type.extensionMethod.cs"] = { fg = colors.blue }
+                hl.Title = { fg = colors.blue, bold = true }
             end,
         },
     }
