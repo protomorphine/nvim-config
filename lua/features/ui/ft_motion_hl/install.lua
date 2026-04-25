@@ -1,16 +1,26 @@
 return {
-    {
-        "tris203/precognition.nvim",
-        opts = {
-            startVisible = true,
-            showBlankVirtLine = true
-        },
-    },
+    -- {
+    --     "tris203/precognition.nvim",
+    --     opts = {
+    --         startVisible = true,
+    --         showBlankVirtLine = true
+    --     },
+    -- },
     {
 
         "samiulsami/fFtT-highlights.nvim",
         config = function()
             require("fFtT-highlights"):setup({})
         end,
-    }
+    },
+    {
+        "chrisgrieser/nvim-spider",
+        lazy = true,
+        keys = {
+            { "w",  "<cmd>lua require('spider').motion('w')<CR>",  mode = { "n", "o", "x" } },
+            { "e",  "<cmd>lua require('spider').motion('e')<CR>",  mode = { "n", "o", "x" } },
+            { "b",  "<cmd>lua require('spider').motion('b')<CR>",  mode = { "n", "o", "x" } },
+            { "ge", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" } },
+        },
+    },
 }

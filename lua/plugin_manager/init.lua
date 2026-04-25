@@ -22,6 +22,7 @@ require("lazy").setup({
         { require("features.ui.ft_motion_hl.install") },
         { require("features.ui.json_visualizer.install") },
         { require("features.ui.cursor.install") },
+        { require("features.ui.line_picker.install") },
 
         { require("features.programming.lsp.install") },
         { require("features.programming.mason.install") },
