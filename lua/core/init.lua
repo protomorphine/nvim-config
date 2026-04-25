@@ -36,11 +36,13 @@ opt.listchars = {
     tab = "  "
 }
 
+opt.fillchars = { eob = " " }
+
 nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("DisableTrailingWhitespace", { clear = true }),
     pattern = { "dashboard", "alpha" },
     callback = function()
-        nvim_set_hl(0, "TrailingWhitespace", { link = nil }) -- Отключаем link
+        nvim_set_hl(0, "TrailingWhitespace", { link = nil })
     end,
 })
 

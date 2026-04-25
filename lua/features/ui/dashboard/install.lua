@@ -13,8 +13,9 @@ return {
             config = {
                 header = splash.frames[1], -- seed header with frame 0
                 center = {
-                    { icon = "  ", desc = "Find File", key = "f", action = "Telescope find_files" },
-                    { icon = "  ", desc = "Quit",      key = "q", action = "qa" },
+                    { icon = "  ", desc = "Find File",    key = "f", action = "Telescope find_files" },
+                    { icon = "  ", desc = "Find Content", key = "g", action = "Telescope live_grep" },
+                    { icon = "  ", desc = "Quit",         key = "q", action = "qa" },
                 },
             },
         }
