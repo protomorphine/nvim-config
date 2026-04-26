@@ -1,5 +1,5 @@
 math.randomseed(os.time())
-local splashes = { "skeleton", "shader", "lights", "finger", "aiface" }
+local splashes = { "skeleton", "shader", "shadertwo", "lights", "blackhole", "finger", "aiface" }
 local splash_preset = splashes[math.random(#splashes)]
 
 return {
