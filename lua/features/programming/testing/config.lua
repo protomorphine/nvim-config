@@ -1,17 +1,18 @@
 require("neotest").setup({
     adapters = {
-        require("neotest-dotnet")
+        require("neotest-dotnet"),
+        require("neotest-go"),
     },
     status = {
-        enabled = true,   -- Enable gutter icons
-        signs = true,     -- Show signs in the gutter
-        virtual_text = false, -- Disable virtual text (optional)
+        enabled = true,
+        signs = true,
+        virtual_text = false,
     },
     icons = {
         passed = "", -- Nerd Font icon (e.g., "✓")
         failed = "", -- Customize as needed
         running = "",
-        skipped = "ﰸ",
+        skipped = "",
         unknown = "",
     },
     -- Optional: Custom highlights
@@ -25,6 +26,6 @@ require("neotest").setup({
         enabled = true,
         animated = true,
         follow = true,
-        open = "split"
+        open = "vsplit"
     }
 })

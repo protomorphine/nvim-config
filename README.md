@@ -1,7 +1,5 @@
 # nvim config
 
-![main](assets/main.png)
-
 My NeoVim configuration for .NET and Go development.
 
 ## Installation
