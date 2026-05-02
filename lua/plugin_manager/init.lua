@@ -31,6 +31,7 @@ require("lazy").setup({
         { require("features.programming.syntax_highlighting.install") },
         { require("features.programming.testing.install") },
         { require("features.programming.folds.install") },
+        { require("features.programming.dap.install") },
     },
     install = { colorscheme = { "jellybeans" } },
     checker = { enabled = true },

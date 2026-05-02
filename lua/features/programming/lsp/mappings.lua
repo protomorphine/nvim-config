@@ -5,11 +5,11 @@ M.add_dotnet_specific_mappings = function()
 
     ---@format disable
 
-    map("n", "<leader>da",  "<cmd>:DotnetUI new_item<CR>",                  { desc = ".NET new item", silent = true                 })
-    map("n", "<leader>dpa", "<cmd>:DotnetUI project package add<CR>",       { desc = ".NET add project package", silent = true      })
-    map("n", "<leader>dra", "<cmd>:DotnetUI project reference add<CR>",     { desc = ".NET add project reference", silent = true    })
-    map("n", "<leader>dpr", "<cmd>:DotnetUI project package remove<CR>",    { desc = ".NET remove project package", silent = true   })
-    map("n", "<leader>drr", "<cmd>:DotnetUI project reference remove<CR>",  { desc = ".NET remove project reference", silent = true })
+    map("n", "<leader>ca",  "<cmd>:DotnetUI new_item<CR>",                  { desc = ".NET new item", silent = true                 })
+    map("n", "<leader>cpa", "<cmd>:DotnetUI project package add<CR>",       { desc = ".NET add project package", silent = true      })
+    map("n", "<leader>cra", "<cmd>:DotnetUI project reference add<CR>",     { desc = ".NET add project reference", silent = true    })
+    map("n", "<leader>cpr", "<cmd>:DotnetUI project package remove<CR>",    { desc = ".NET remove project package", silent = true   })
+    map("n", "<leader>crr", "<cmd>:DotnetUI project reference remove<CR>",  { desc = ".NET remove project reference", silent = true })
 
     ---@format enable
 end

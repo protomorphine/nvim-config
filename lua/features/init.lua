@@ -11,5 +11,6 @@ require("features.programming.syntax_highlighting.config")
 require("features.programming.completion.config")
 require("features.programming.lsp.config")
 require("features.programming.testing.config")
+require("features.programming.dap.config")
 
 require("features.ui.highlights")
