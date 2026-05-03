@@ -5,6 +5,7 @@ map("n", "<leader>db", function() require("dap").toggle_breakpoint() end, { desc
 
 map("n", "<leader>dn", "<cmd>:DapNew<CR>", { desc = "Start new debugging session", silent = true })
 map("n", "<leader>dc", "<cmd>:DapContinue<CR>", { desc = "Continue", silent = true })
+map("n", "<leader>ds", "<cmd>:DapStop<CR>", { desc = "Stop", silent = true })
 
 map("n", "<Down>", "<cmd>:DapStepOver<CR>", { desc = "Continue", silent = true })
 map("n", "<Right>", "<cmd>:DapStepInto<CR>", { desc = "Continue", silent = true })

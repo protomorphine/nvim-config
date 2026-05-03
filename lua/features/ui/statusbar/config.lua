@@ -32,6 +32,11 @@ local config = {
             normal = { c = { fg = colors.fg, bg = colors.bg } },
             inactive = { c = { fg = colors.fg, bg = colors.bg } },
         },
+        ignore_focus = {
+            "dapui_watches", "dapui_breakpoints",
+            "dapui_scopes", "dapui_console",
+            "dapui_stacks", "dap-repl"
+        }
     },
     sections = {
         -- these are to remove the defaults
