@@ -1,55 +1,137 @@
 return {
     {
-        "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
+        "saghen/blink.cmp",
         dependencies = {
-            { "L3MON4D3/LuaSnip" },
-            { "hrsh7th/cmp-buffer" },
-            { "hrsh7th/cmp-path" },
-            { "hrsh7th/cmp-nvim-lsp-signature-help" },
-            { "saadparwaiz1/cmp_luasnip" },
+            "rafamadriz/friendly-snippets",
+            "onsails/lspkind.nvim",
         },
-    },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "xzbdmw/colorful-menu.nvim", },
-    { "windwp/nvim-autopairs",     event = "InsertEnter" },
-    {
-        "folke/lazydev.nvim",
-        ft = "lua",
+        version = "*",
+
+        ---@module 'blink.cmp'
+        ---@type blink.cmp.Config
         opts = {
-            library = {
-                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+
+            appearance = {
+                use_nvim_cmp_as_default = false,
+                nerd_font_variant = "mono",
+            },
+
+            completion = {
+                accept = { auto_brackets = { enabled = true } },
+
+                documentation = {
+                    auto_show = true,
+                    auto_show_delay_ms = 250,
+                    treesitter_highlighting = true,
+                    window = {
+                        border = "rounded",
+                        winhighlight =
+                        'Normal:BlinkCmpMenu,FloatBorder:Normal,CursorLine:BlinkCmpMenuSelection,Search:None',
+
+                    },
+                },
+
+                list = {
+                    selection = {
+                        preselect = true,
+                        auto_insert = true,
+                    }
+                },
+
+                menu = {
+                    border = "rounded",
+                    winhighlight = 'Normal:BlinkCmpMenu,FloatBorder:Normal,CursorLine:BlinkCmpMenuSelection,Search:None',
+
+                    cmdline_position = function()
+                        if vim.g.ui_cmdline_pos ~= nil then
+                            local pos = vim.g.ui_cmdline_pos
+                            return { pos[1] - 1, pos[2] }
+                        end
+                        local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
+                        return { vim.o.lines - height, 0 }
+                    end,
+
+                    draw = {
+                        columns = {
+                            { "kind_icon", "label", gap = 1 },
+                            { "kind" },
+                        },
+                        components = {
+                            kind_icon = {
+                                text = function(item)
+                                    local kind = require("lspkind").symbol_map[item.kind] or ""
+                                    return kind .. " "
+                                end,
+                            },
+                            label = {
+                                text = function(item)
+                                    return item.label
+                                end,
+                            },
+                            kind = {
+                                text = function(item)
+                                    return item.kind
+                                end,
+                            },
+                        },
+                    },
+                },
+            },
+
+            keymap = {
+                ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+                ["<C-e>"] = { "hide", "fallback" },
+                ["<CR>"] = { "accept", "fallback" },
+
+                ["<Tab>"] = {
+                    function(cmp)
+                        return cmp.select_next()
+                    end,
+                    "snippet_forward",
+                    "fallback",
+                },
+                ["<S-Tab>"] = {
+                    function(cmp)
+                        return cmp.select_prev()
+                    end,
+                    "snippet_backward",
+                    "fallback",
+                },
+
+                ["<Up>"] = { "select_prev", "fallback" },
+                ["<Down>"] = { "select_next", "fallback" },
+                ["<C-p>"] = { "select_prev", "fallback" },
+                ["<C-n>"] = { "select_next", "fallback" },
+                ["<C-up>"] = { "scroll_documentation_up", "fallback" },
+                ["<C-down>"] = { "scroll_documentation_down", "fallback" },
+            },
+
+            signature = {
+                enabled = true,
+                window = { border = "rounded" },
+            },
+
+            sources = {
+                default = { "lsp", "path", "snippets", "buffer" },
+                providers = {
+                    lsp = {
+                        min_keyword_length = 2, -- Количество символов для активации провайдера
+                        score_offset = 0,       -- Увеличить/уменьшить балл элементов
+                    },
+                    path = {
+                        min_keyword_length = 0,
+                    },
+                    snippets = {
+                        min_keyword_length = 2,
+                    },
+                    buffer = {
+                        min_keyword_length = 5,
+                        max_items = 5,
+                    },
+                },
             },
         },
     },
-    {
-        "L3MON4D3/LuaSnip",
-        build = vim.fn.has "win32" ~= 0 and "make install_jsregexp" or nil,
-        dependencies = {
-            "rafamadriz/friendly-snippets",
-            "benfowler/telescope-luasnip.nvim",
-        },
-        config = function(_, opts)
-            if opts then require("luasnip").config.setup(opts) end
-            vim.tbl_map(
-                function(type) require("luasnip.loaders.from_" .. type).lazy_load() end,
-                { "vscode", "snipmate", "lua" }
-            )
-            -- friendly-snippets - enable standardized comments snippets
-            require("luasnip").filetype_extend("typescript", { "tsdoc" })
-            require("luasnip").filetype_extend("javascript", { "jsdoc" })
-            require("luasnip").filetype_extend("lua", { "luadoc" })
-            require("luasnip").filetype_extend("python", { "pydoc" })
-            require("luasnip").filetype_extend("rust", { "rustdoc" })
-            require("luasnip").filetype_extend("cs", { "csharpdoc" })
-            require("luasnip").filetype_extend("java", { "javadoc" })
-            require("luasnip").filetype_extend("c", { "cdoc" })
-            require("luasnip").filetype_extend("cpp", { "cppdoc" })
-            require("luasnip").filetype_extend("php", { "phpdoc" })
-            require("luasnip").filetype_extend("kotlin", { "kdoc" })
-            require("luasnip").filetype_extend("ruby", { "rdoc" })
-            require("luasnip").filetype_extend("sh", { "shelldoc" })
-        end,
-    },
-    { "https://github.com/onsails/lspkind.nvim" }
+    { "xzbdmw/colorful-menu.nvim", },
+    { "windwp/nvim-autopairs",     event = "InsertEnter" },
 }

@@ -1,6 +1,9 @@
 return {
     cmd = { "gopls", "-v" },
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    init_options = {
+        semanticTokens = true,
+    },
     settings = {
         gopls = {
             gofumpt = true,

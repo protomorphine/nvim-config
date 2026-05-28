@@ -4,7 +4,7 @@ return {
     { "seblj/roslyn.nvim",              ft = "cs",                                                                            lazy = false, },
     { "MoaidHathot/dotnet.nvim",        cmd = "DotnetUI",                                                                     opts = {} },
     { "oribarilan/lensline.nvim",       tag = "1.0.0",                                                                        event = "LspAttach",                           config = {} },
-    { "neovim/nvim-lspconfig",          event = { "BufReadPre", "BufNewFile" },                                               cmd = { "LspInfo", "LspInstall", "LspStart" }, dependencies = { "hrsh7th/cmp-nvim-lsp", "williamboman/mason-lspconfig.nvim" }, },
+    { "neovim/nvim-lspconfig",          event = { "BufReadPre", "BufNewFile" },                                               cmd = { "LspInfo", "LspInstall", "LspStart" }, dependencies = { "williamboman/mason-lspconfig.nvim" }, },
     { "Fildo7525/pretty_hover",         event = "LspAttach",                                                                  config = {} },
     { "chrisgrieser/nvim-lsp-endhints", event = "LspAttach",                                                                  opts = {}, },
     { "nvimdev/lspsaga.nvim",           dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons", }, },
