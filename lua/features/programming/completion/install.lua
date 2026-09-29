@@ -108,14 +108,17 @@ return {
 
             signature = {
                 enabled = true,
-                window = { border = "rounded" },
+                window = {
+                    border = "rounded",
+                    winhighlight = 'Normal:BlinkCmpMenu,FloatBorder:Normal,CursorLine:BlinkCmpMenuSelection,Search:None',
+                },
             },
 
             sources = {
                 default = { "lsp", "path", "snippets", "buffer" },
                 providers = {
                     lsp = {
-                        min_keyword_length = 2, -- Количество символов для активации провайдера
+                        min_keyword_length = 0, -- Количество символов для активации провайдера
                         score_offset = 0,       -- Увеличить/уменьшить балл элементов
                     },
                     path = {

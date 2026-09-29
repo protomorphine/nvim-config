@@ -4,6 +4,7 @@ vim.lsp.enable("cmake")
 vim.lsp.enable("fsautocomplete")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("roslyn")
+vim.lsp.enable("ts_ls")
 
 local lspsaga = require("lspsaga")
 lspsaga.setup({
