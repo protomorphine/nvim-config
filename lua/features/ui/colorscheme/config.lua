@@ -1,1 +1,1 @@
-vim.cmd("colorscheme jellybeans-mono")
+vim.cmd("colorscheme kanagawa-dragon")
